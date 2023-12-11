@@ -1,0 +1,133 @@
+html {
+    height: 100%;
+    width: 100%;
+  }
+  /*this is the start of front page*/
+  /*overall page layout*/
+  #main_div{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .second-main{
+    height:100vh;
+    width:100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  /* general section*/ 
+  .slide_button{
+    width:100px;
+    height:40px;
+    margin: 20px 20px 20px 10px;
+    border-radius: 100px; 
+    background-color: white; 
+    transition: all 0.2s;
+    border: 0;
+  }
+  /* study room section*/
+  #study_room{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 4fr;
+    background-color:#8Ec3B0;
+    z-index: 0;
+  }
+  #cool{
+    grid-row-start: 1;
+    grid-row-end:2;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+  }
+  /* game room section*/
+  #game_room{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 4fr;
+    background-color:#A9A9A9;
+    z-index: 0;
+    color:white;
+  }
+  #sample{
+    display:flex;
+    flex-direction:row;
+    justify-content: end;
+  }
+  .game_slide_button{
+    width:100px;
+    height:40px;
+    border-radius: 100px; 
+    margin-top: 20px;
+    margin-right: 15px;
+    background-color: white; 
+    transition: all 0.2s;
+    border: 0;
+  }
+  #dark{
+    grid-row-start: 1;
+    grid-row-end:2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  #dark span{
+    color:#A9A9A9;
+    font-size:20pt;
+    font-weight:600;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    margin-top:-3px;
+  }
+  #cool:before{
+    content: "";
+    position:absolute;
+    top:0;
+    left:0;
+    margin: 20px 20px 20px 23px;
+    width: 100px;
+    height: 40px;
+    background-color:white;
+    border-radius:100px;
+    transition:all 0.5s;
+    z-index: -1;
+  }
+  #cool:hover:before{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+  #study{
+    grid-row-start: 3;
+    grid-row-end:5;
+    font-size: 60pt;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+  }
+  
+  #game{
+    grid-row-start: 3;
+    grid-row-end:5;
+    font-size: 60pt;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+  }
+  .left::before{
+    content:"";
+    position:absolute;
+    white-space:no wrap;
+  }
+  .right:before{
+    content:"";
+    position:absolute;
+    white-space:no wrap;
+  }
+  .hover-left .left{
+    width: var(--hover-width);
+  }
+  .hover-left .right{
+    width: var(--other-width);
+  }
