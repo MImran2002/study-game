@@ -8,6 +8,8 @@ if (randomNumber2>randomNumber1){
     document.querySelector("h1").textContent="User wins";
 } else if (randomNumber2<randomNumber1){
     document.querySelector("h1").textContent="Bot wins";
+    alert("You lose! Sending you back to Study Room");
+    window.location = "https://mimran2002.github.io/study-game/study.html"
 } else if (randomNumber2==randomNumber1){
     document.querySelector("h1").textContent="It's a draw!";
 }
