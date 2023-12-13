@@ -1,9 +1,9 @@
-"use strict";
-import { db } from "../firebaseConfig";
-import{ collection, getDocs, addDoc} from 'firebase/firestore';
+//"use strict";
+//import { db } from "../firebaseConfig";
+//import{ collection, getDocs, addDoc} from 'firebase/firestore';
 
-async function getTasks(db){
-}
+//async function getTasks(db){
+//}
 let motivationalQuote = {
     "0": "The only people who never fail are those who never try.",
     "1": "Every failure brings with it the seed of an equivalent success.",
@@ -22,6 +22,66 @@ let motivationalQuote = {
     "14": "You miss 100 percent of the shots you don't take.",
     "15": "Success is how high you bounce after you hit bottom.",
 }
+//let dayOption = {
+//    "Lincoln Hall" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
+//    "Draper Hall" : "Enjoy your coffee at Draper Building!",
+//    "Hutchenson Library" : "Enjoy your coffee at the Hutchenson Library!",
+//    "Danforth Residence" : "Enjoy your coffee at Danforth Hall and Draper Building!",
+//    "MAC building" : "Enjoy your coffee at the Pinncale cafe!",
+//    "Anna Smith Residence" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
+ //   }
+//let nightOption = {
+//    "Lincoln Hall" : "Enjoy your coffee at Alumni Building and Woods-Penn",
+//    "Draper Hall" : "Enjoy your coffee at Draper Building!",
+ ///   "Hutchenson Library" : "Enjoy your coffee at the Hutchenson Library!",
+//    "Danforth Residence" : "Enjoy your coffee at Danforth Hall and Draper Building!",
+//    "MAC building" : "Enjoy your coffee at Alumni Building and Woods-Penn",
+ //   "Anna Smith Residence" : "Enjoy your coffee at Alumni Building and Woods-Penn",
+//    }
+//let allDayOption = {
+///    "Lincoln Hall" : "Enjoy your coffee at Woods-Penn!",
+  //  "Draper Hall" : "Enjoy your coffee at Woods-Penn!",
+//    "Hutchenson Library" : "Enjoy your coffee at Woods-Penn!",
+//    "Danforth Residence" : "Enjoy your coffee at Woods-Penn and Danforth Lobby!",
+ //   "MAC building" : "Enjoy your coffee at Woods-Penn!",
+  //  "Anna Smith Residence" : "Enjoy your coffee at Woods-Penn!",
+   // }
+let timeOption = [ "Morning (8AM-12PM)", "Evening (12PM-6PM)", "Night(6PM-9PM)", "24/7" ]
+    
+let placeOption = {
+    "Morning (8AM-12PM)" : {
+        "Lincoln Hall" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
+        "Draper Hall" : "Enjoy your coffee at Draper Building!",
+        "Hutchenson Library" : "Enjoy your coffee at the Hutchenson Library!",
+        "Danforth Residence" : "Enjoy your coffee at Danforth Hall and Draper Building!",
+        "MAC building" : "Enjoy your coffee at the Pinncale cafe!",
+        "Anna Smith Residence" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
+        },
+    "Evening (12PM-6PM)" : {
+        "Lincoln Hall" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
+        "Draper Hall" : "Enjoy your coffee at Draper Building!",
+        "Hutchenson Library" : "Enjoy your coffee at the Hutchenson Library!",
+        "Danforth Residence" : "Enjoy your coffee at Danforth Hall and Draper Building!",
+        "MAC building" : "Enjoy your coffee at the Pinncale cafe!",
+        "Anna Smith Residence" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
+        },
+    "Night(6PM-9PM)" : {
+        "Lincoln Hall" : "Enjoy your coffee at Alumni Building and Woods-Penn",
+        "Draper Hall" : "Enjoy your coffee at Draper Building!",
+        "Hutchenson Library" : "Enjoy your coffee at the Hutchenson Library!",
+        "Danforth Residence" : "Enjoy your coffee at Danforth Hall and Draper Building!",
+        "MAC building" : "Enjoy your coffee at Alumni Building and Woods-Penn",
+        "Anna Smith Residence" : "Enjoy your coffee at Alumni Building and Woods-Penn",
+        },
+    "24/7" : {
+        "Lincoln Hall" : "Enjoy your coffee at Woods-Penn!",
+        "Draper Hall" : "Enjoy your coffee at Woods-Penn!",
+        "Hutchenson Library" : "Enjoy your coffee at Woods-Penn!",
+        "Danforth Residence" : "Enjoy your coffee at Woods-Penn and Danforth Lobby!",
+        "MAC building" : "Enjoy your coffee at Woods-Penn!",
+        "Anna Smith Residence" : "Enjoy your coffee at Woods-Penn!",
+        },
+    }
 document.querySelector(".moti-button").addEventListener("click",function(){
     var randomNumber=Math.random();
     var randomNumbers=Math.floor(randomNumber*15);
@@ -40,21 +100,44 @@ panels.forEach((panel) => {
 function removeActiveClasses() {
     panels.forEach((panel) => {
         panel.classList.remove('active')
+        console.log("remove");
     })
 }
 
 const progress = document.querySelectorAll('.progressButton')
 progress.forEach((progressButton) => {
     progressButton.addEventListener('click', () =>{
-        removeActiveClasses()
+        removeLightsUpClasses()
         progressButton.classList.add('lights-up')
     })
 })
 
-function removeActiveClasses() {
+function removeLightsUpClasses() {
     progress.forEach((progressButton) => {
         progressButton.classList.remove('lights-up')
     })
 }
 
-
+function coffee() {
+    var timeIndex = document.getElementById("time").options.selectedIndex;
+    var time = document.getElementById("time").options[timeIndex].text;
+    var placeIndex = document.getElementById("place").options.selectedIndex;
+    var place = document.getElementById("place").options[placeIndex].text;
+    console.log(time)
+    console.log(place)
+    for (let a of timeOption){
+        if ( time == a){
+            console.log(a)
+            console.log(time)
+            let placement = placeOption[a] 
+            for(let b in placement){
+                if ( place == b){
+                let test = placeOption[a][b]
+                document.getElementById("return").innerHTML = test
+                } else {
+                document.getElementById("return").innerHTML = "Enjoy your coffee at Woods-Penn!";
+                }
+            }
+        }
+    } 
+}

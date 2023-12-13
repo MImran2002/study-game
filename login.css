@@ -1,0 +1,38 @@
+html{
+    background-color: #AAC8A7;
+    height: 100%;
+    width: 100%
+}
+#login-box{
+    position: absolute;
+    top:25%;
+    right:25%;
+    height:50%;
+    width:50%;
+    border-radius: 30px;
+    font-size: 20pt;
+    background-color: white;
+    color:#AAC8A7;
+    box-shadow: 10px 10px black;
+    text-align:center;
+}
+.inputs input{
+    height:50px;
+    width:200px;
+    border:thin;
+    border-radius: 5px;
+    border-style:dashed;
+    border-color: #F1C27B;
+}
+.buttons input{
+        height:50px;
+        width:200px;
+        border:thick;
+        border-radius: 5px;
+        background-color: #F1C27B;
+        color:white;
+        font-size: 20pt;
+}
+.buttons input:hover{
+    background-color: #e7ac53;
+}
