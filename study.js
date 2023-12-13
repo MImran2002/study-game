@@ -1,9 +1,3 @@
-//"use strict";
-//import { db } from "../firebaseConfig";
-//import{ collection, getDocs, addDoc} from 'firebase/firestore';
-
-//async function getTasks(db){
-//}
 let motivationalQuote = {
     "0": "The only people who never fail are those who never try.",
     "1": "Every failure brings with it the seed of an equivalent success.",
@@ -21,33 +15,8 @@ let motivationalQuote = {
     "13": "The virtue lies in the struggle, not in the prize.",
     "14": "You miss 100 percent of the shots you don't take.",
     "15": "Success is how high you bounce after you hit bottom.",
-}
-//let dayOption = {
-//    "Lincoln Hall" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
-//    "Draper Hall" : "Enjoy your coffee at Draper Building!",
-//    "Hutchenson Library" : "Enjoy your coffee at the Hutchenson Library!",
-//    "Danforth Residence" : "Enjoy your coffee at Danforth Hall and Draper Building!",
-//    "MAC building" : "Enjoy your coffee at the Pinncale cafe!",
-//    "Anna Smith Residence" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
- //   }
-//let nightOption = {
-//    "Lincoln Hall" : "Enjoy your coffee at Alumni Building and Woods-Penn",
-//    "Draper Hall" : "Enjoy your coffee at Draper Building!",
- ///   "Hutchenson Library" : "Enjoy your coffee at the Hutchenson Library!",
-//    "Danforth Residence" : "Enjoy your coffee at Danforth Hall and Draper Building!",
-//    "MAC building" : "Enjoy your coffee at Alumni Building and Woods-Penn",
- //   "Anna Smith Residence" : "Enjoy your coffee at Alumni Building and Woods-Penn",
-//    }
-//let allDayOption = {
-///    "Lincoln Hall" : "Enjoy your coffee at Woods-Penn!",
-  //  "Draper Hall" : "Enjoy your coffee at Woods-Penn!",
-//    "Hutchenson Library" : "Enjoy your coffee at Woods-Penn!",
-//    "Danforth Residence" : "Enjoy your coffee at Woods-Penn and Danforth Lobby!",
- //   "MAC building" : "Enjoy your coffee at Woods-Penn!",
-  //  "Anna Smith Residence" : "Enjoy your coffee at Woods-Penn!",
-   // }
-let timeOption = [ "Morning (8AM-12PM)", "Evening (12PM-6PM)", "Night(6PM-9PM)", "24/7" ]
-    
+};
+let timeOption = [ "Morning (8AM-12PM)", "Evening (12PM-6PM)", "Night(6PM-9PM)", "24/7" ]; 
 let placeOption = {
     "Morning (8AM-12PM)" : {
         "Lincoln Hall" : "Enjoy your coffee at Frost Cafe, BC&T!, Alumni Building and Woods-Penn",
@@ -81,63 +50,58 @@ let placeOption = {
         "MAC building" : "Enjoy your coffee at Woods-Penn!",
         "Anna Smith Residence" : "Enjoy your coffee at Woods-Penn!",
         },
-    }
+    };
 document.querySelector(".moti-button").addEventListener("click",function(){
     var randomNumber=Math.random();
     var randomNumbers=Math.floor(randomNumber*15);
-    console.log(randomNumbers);
-    document.querySelector(".quote").innerHTML = motivationalQuote[randomNumbers]
-    console.log(motivationalQuote[randomNumbers])
-})
+    document.querySelector(".quote").innerHTML = motivationalQuote[randomNumbers];
+});
 const panels = document.querySelectorAll('.panel')
 panels.forEach((panel) => {
     panel.addEventListener('click', () =>{
-        removeActiveClasses()
-        panel.classList.add('active')
+        removeActiveClasses();
+        panel.classList.add('active');
     })
-})
+});
 
 function removeActiveClasses() {
     panels.forEach((panel) => {
-        panel.classList.remove('active')
+        panel.classList.remove('active');
         console.log("remove");
     })
-}
+};
 
 const progress = document.querySelectorAll('.progressButton')
 progress.forEach((progressButton) => {
     progressButton.addEventListener('click', () =>{
-        removeLightsUpClasses()
-        progressButton.classList.add('lights-up')
+        removeLightsUpClasses();
+        progressButton.classList.add('lights-up');
     })
-})
+});
 
 function removeLightsUpClasses() {
     progress.forEach((progressButton) => {
-        progressButton.classList.remove('lights-up')
+        progressButton.classList.remove('lights-up');
     })
-}
+};
 
 function coffee() {
     var timeIndex = document.getElementById("time").options.selectedIndex;
     var time = document.getElementById("time").options[timeIndex].text;
     var placeIndex = document.getElementById("place").options.selectedIndex;
     var place = document.getElementById("place").options[placeIndex].text;
-    console.log(time)
-    console.log(place)
     for (let a of timeOption){
         if ( time == a){
-            console.log(a)
-            console.log(time)
-            let placement = placeOption[a] 
+            let placement = placeOption[a];
             for(let b in placement){
                 if ( place == b){
-                let test = placeOption[a][b]
-                document.getElementById("return").innerHTML = test
-                } else {
+                let test = placeOption[a][b];
+                document.getElementById("return").innerHTML = test;
+                return;
+            }   else {
                 document.getElementById("return").innerHTML = "Enjoy your coffee at Woods-Penn!";
-                }
-            }
-        }
-    } 
-}
+                };  
+            };
+        };
+    }; 
+};
